@@ -1,0 +1,48 @@
+def matrix_addition(matrix1, matrix2):
+    result = [[matrix1[i][j] + matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
+    return result
+
+def matrix_subtraction(matrix1, matrix2):
+    result = [[matrix1[i][j] - matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
+    return result
+
+def matrix_multiplication(matrix1, matrix2):
+    result = [[sum(matrix1[i][k] * matrix2[k][j] for k in range(len(matrix2))) for j in range(len(matrix2[0]))] for i in range(len(matrix1))]
+    return result
+
+def matrix_transpose(matrix):
+    result = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+    return result
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+
+if __name__ == "__main__":
+    # Example matrices
+    matrix_a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    matrix_b = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
+
+    # Addition
+    result_addition = matrix_addition(matrix_a, matrix_b)
+    print("Matrix Addition:")
+    print_matrix(result_addition)
+
+    # Subtraction
+    result_subtraction = matrix_subtraction(matrix_a, matrix_b)
+    print("\nMatrix Subtraction:")
+    print_matrix(result_subtraction)
+
+    # Multiplication
+    result_multiplication = matrix_multiplication(matrix_a, matrix_b)
+    print("\nMatrix Multiplication:")
+    print_matrix(result_multiplication)
+
+    # Transpose
+    result_transpose_a = matrix_transpose(matrix_a)
+    print("\nTranspose of Matrix A:")
+    print_matrix(result_transpose_a)
+
+    result_transpose_b = matrix_transpose(matrix_b)
+    print("\nTranspose of Matrix B:")
+    print_matrix(result_transpose_b)

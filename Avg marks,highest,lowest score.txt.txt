@@ -1,0 +1,70 @@
+from collections import Counter
+
+def record_marks():
+    # Get the number of students
+    num_students = int(input("Enter the number of students: "))
+
+    # Create an empty dictionary to store student marks
+    student_marks = {}
+
+    # Input marks for each student
+    for i in range(1, num_students + 1):
+        student_name = input(f"Enter the name of student {i}: ")
+        marks = float(input(f"Enter the marks scored by {student_name} in Fundamental of Data Structure: "))
+        
+        # Store the marks in the dictionary
+        student_marks[student_name] = marks
+
+    return student_marks
+
+def compute_average(marks_data):
+    # Calculate the average score of the class
+    total_marks = sum(marks_data.values())
+    average_score = total_marks / len(marks_data)
+    return average_score
+
+def find_highest_lowest(marks_data):
+    # Find the highest and lowest scores in the class
+    highest_score = max(marks_data.values())
+    lowest_score = min(marks_data.values())
+    return highest_score, lowest_score
+
+def count_absent_students(total_students, present_students):
+    # Count the number of students who were absent for the test
+    absent_students = total_students - len(present_students)
+    return absent_students
+
+def display_highest_frequency(marks_data):
+    # Display marks with the highest frequency
+    marks_frequency = Counter(marks_data.values())
+    highest_frequency = max(marks_frequency.values())
+
+    print("\nMarks with the highest frequency:")
+    for marks, frequency in marks_frequency.items():
+        if frequency == highest_frequency:
+            print(f"Marks: {marks}, Frequency: {frequency}")
+
+def main():
+    # Record marks for N students
+    marks_data = record_marks()
+
+    # Compute and display average score
+    average_score = compute_average(marks_data)
+    print(f"\nAverage Score of the Class: {average_score:.2f}")
+
+    # Find and display the highest and lowest scores
+    highest, lowest = find_highest_lowest(marks_data)
+    print(f"Highest Score: {highest}")
+    print(f"Lowest Score: {lowest}")
+
+    # Count and display the number of absent students
+    total_students = int(input("Enter the total number of students in the class: "))
+    present_students = list(marks_data.keys())
+    absent_students = count_absent_students(total_students, present_students)
+    print(f"Number of Students Absent for the Test: {absent_students}")
+
+    # Display marks with the highest frequency
+    display_highest_frequency(marks_data)
+
+if __name__ == "__main__":
+    main()

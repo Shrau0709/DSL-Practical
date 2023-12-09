@@ -1,0 +1,24 @@
+def process_transactions(transaction_log):
+    balance = 0
+
+    for transaction in transaction_log:
+        action, amount = transaction.split()
+        amount = int(amount)
+
+        if action == 'D':
+            balance += amount
+        elif action == 'W':
+            if balance >= amount:
+                balance -= amount
+            else:
+                print("Withdrawal not allowed. Insufficient balance.")
+    
+    return balance
+
+if __name__ == "__main__":
+    transaction_input = input("Enter transaction log (e.g., D 300, D 300, W 200, D 100): ")
+    transactions = transaction_input.split(', ')
+
+    net_amount = process_transactions(transactions)
+
+    print("Net Amount:", net_amount)
