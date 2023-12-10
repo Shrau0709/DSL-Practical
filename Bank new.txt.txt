@@ -1,0 +1,33 @@
+def calculate_net_amount(tansactions):
+    balance = 0
+
+    for transaction in transactions:
+        transaction_type, amount = transaction.split()
+        amount = int(amount)
+
+        if transaction_type == 'D':
+            balance += amount
+        elif action == 'W':
+            if balance >= amount:
+                balance -= amount
+            else:
+                print("Withdrawal not allowed. Insufficient balance.")
+    
+    return balance
+
+if __name__ == "__main__":
+    transactions =[]
+    
+    while True:
+        transaction=input("Enter transaction(D/W amount)or 'q' to quit:")
+        
+        if transaction.lower()=='q':
+            break
+        
+        if transaction.lower()=='q':
+            break
+        
+        transactions.append(transaction)
+        
+    net_amount=calculate_net_amoount(transactions)
+    print(f"Net amount in the account:{net_amount}")
